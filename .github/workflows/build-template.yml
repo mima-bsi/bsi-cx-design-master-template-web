@@ -1,0 +1,11 @@
+name: Test Workflow Setup
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print success message
+        run: echo "The pipeline has been successfully launched!"
