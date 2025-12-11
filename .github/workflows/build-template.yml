@@ -31,13 +31,13 @@ jobs:
 
       # Upload artifact
       - name: Upload Website Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: master-template-cx-24.2-website
           path: dist/master-template-cx-24.2-website/*.zip
 
       - name: Upload Landingpage Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: master-template-cx-24.2-landingpage
           path: dist/master-template-cx-24.2-landingpage-de/*.zip
