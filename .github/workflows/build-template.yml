@@ -29,16 +29,9 @@ jobs:
         run: |
           npm run build:prod
 
-      # Upload artifact
-      - name: Create combined ZIP of all build results
-        run: |
-          mkdir -p artifacts
-          cd dist
-          zip -r ../artifacts/all-builds.zip */*.zip
-
-      # Upload single artifact
+      # Upload all ZIPs of dist folder 
       - name: Upload Combined Artifact
         uses: actions/upload-artifact@v4
         with:
           name: master-template-web-all-builds
-          path: artifacts/all-builds.zip
+          path: dist/**/*.zip
