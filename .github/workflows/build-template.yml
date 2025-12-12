@@ -1,4 +1,4 @@
-name: Build and Package
+name: Build & Merge Dist Artifacts
 
 on:
   workflow_dispatch:  # allows you to launch the workflow manually
@@ -30,14 +30,15 @@ jobs:
           npm run build:prod
 
       # Upload artifact
-      - name: Upload Website Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: master-template-cx-24.2-website
-          path: dist/master-template-cx-24.2-website/*.zip
+      - name: Create combined ZIP of all build results
+        run: |
+          mkdir -p artifacts
+          cd dist
+          zip -r ../artifacts/all-builds.zip */*.zip
 
-      - name: Upload Landingpage Artifact
+      # Upload single artifact
+      - name: Upload Combined Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: master-template-cx-24.2-landingpage
-          path: dist/master-template-cx-24.2-landingpage-de/*.zip
+          name: master-template-web-all-builds
+          path: artifacts/all-builds.zip
